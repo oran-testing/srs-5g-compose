@@ -34,8 +34,8 @@ ADD . /src
 # Install build dependencies, and also ZMQ and UHD libraries
 RUN /src/.gitlab/ci/builders/install_dependencies.sh
 
-# Build srsRAN Project with default options
-RUN /src/.gitlab/ci/builders/builder.sh /src
+# Build srsRAN Project; include ZeroMQ.
+RUN /src/.gitlab/ci/builders/builder.sh -DENABLE_EXPORT=ON -DENABLE_ZEROMQ=ON /src
 # Install in the OS filesystem to later copy into the next stage
 RUN cd /src/build && make install
 
@@ -56,7 +56,7 @@ RUN /usr/local/bin/install_dependencies.sh run && \
     /usr/local/bin/install_dependencies.sh extra && \
     apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Uncomment this to download uhd images inside the container 
+# Uncomment this to download uhd images inside the container
 # instead of sharing them with the host (in the docker-compose.yml)
 # RUN uhd_images_downloader -t b2xx && \
-#     uhd_images_downloader -t n300    
+#     uhd_images_downloader -t n300
