@@ -15,6 +15,7 @@ spec:
       containers:
         - name: open5gs-5gc
           image: open5gs-5gc:latest
+          imagePullPolicy: IfNotPresent
           command: ["5gc", "-c", "open5gs-5gc.yml"]
           ports:
             - containerPort: 9999
