@@ -34,4 +34,4 @@ COPY ./src ./src
 WORKDIR /app/src/
 
 # Specify the command to run your application
-CMD ["python3", "main.py"]
+CMD python3 main.py --ip "${IP}" --port "${PORT}"
