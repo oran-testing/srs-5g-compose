@@ -2,36 +2,11 @@
 
 ## Overview
 
-Our gNB controller software manages four main processes:
+Our gNB controller software manages four main docker containers:
 - Open5GS Core Network
 - srsRAN generational Node B
 - Python Metrics Server
 - InfluxDB
-
-## Installation and Usage
-
-To install the gNB:
-```bash
-sudo ./scripts/install-open5gs.sh
-sudo ./scripts/install-gnb.sh
-```
-This will create a `gnb-controller.service` file in `/etc/systemd/system/`
-
-Then run:
-```bash
-sudo systemctl daemon-reload
-sudo systemctl start gnb-controller.service
-```
-
-The daemon will take around one minute to build and start all containers depending on the system
-
-Optionally the controller can be run without systemctl:
-```bash
-cd controller/gnb
-sudo python3 main.py
-```
-
-
 
 ## Message structure
 
